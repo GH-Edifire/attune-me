@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SettingsController">
+   <children>
+      <Label text=".xml Path Name">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin></Label>
+      <TextField fx:id="txtFieldInputPath" promptText="PATH\TO\FILE" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-border-color: gray;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin></TextField>
+      <TextArea fx:id="txtAreaSettings" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-border-color: gray;">
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" />
+         </VBox.margin></TextArea>
+      <Button fx:id="btnOK" mnemonicParsing="false" onMouseClicked="#closeWindow" text="OK" textAlignment="CENTER" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-border-color: gray;">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="5.0" left="275.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="jMTPe64">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/jMTPe64" />
+    </CLASSES>
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/jMTPe64" />
+    </NATIVE>
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/jMTPe64" recursive="false" />
+  </library>
+</component>

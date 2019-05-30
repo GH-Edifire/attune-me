@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <bottom>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefWidth="250.0">
+               <children>
+                  <Label fx:id="lblPath" text="Label">
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ProgressBar fx:id="prgsBar" prefWidth="250.0" progress="0.0">
+                     <padding>
+                        <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+                     </padding>
+                  </ProgressBar>
+               </children></VBox>
+            <Region prefHeight="51.0" prefWidth="175.0" />
+            <Button mnemonicParsing="false" onMouseClicked="#transferPlaylists" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-border-color: gray;" text="Start Sync">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <right>
+      <VBox spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnSettings" mnemonicParsing="false" onMouseClicked="#openSettingsWindow" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-border-color: gray;" text=".xml Path" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#loadListView" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-border-color: gray;" text="Refresh" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Region prefHeight="102.0" prefWidth="109.0" />
+            <Label fx:id="lblPhone" text="Phone" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+         </padding>
+      </VBox>
+   </right>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Select the playlists you wish to sync:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </Label>
+            <ListView id="lvPlaylists" fx:id="lvPlaylists" editable="false" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-border-color: gray;">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </ListView>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

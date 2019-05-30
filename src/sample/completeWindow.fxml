@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CompleteWindow">
+   <children>
+      <Label alignment="CENTER" text="Sync Complete!" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin></Label>
+      <Button fx:id="btnOK" mnemonicParsing="false" onMouseClicked="#closeWindow" text="OK" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="5.0" left="55.0" />
+         </VBox.margin></Button>
+   </children>
+</VBox>
