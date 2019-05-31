@@ -194,7 +194,10 @@ public class Controller implements Initializable {
             for(ListViewCheckItem entry : lvPlaylists.getItems()){
                 if(entry.isOn()){
                     String m3uInitial = "#EXTM3U";
-                    Files.write(Paths.get(iTunesPath+"\\"+ entry.getName() + ".m3u"),m3uInitial.getBytes(),StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                    String edit = entry.getName().replaceAll("/","");
+                    System.out.println(edit);
+                    Files.write(Paths.get(iTunesPath+"\\"+ edit + ".m3u"),m3uInitial.getBytes(),StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                    //Files.write(Paths.get(iTunesPath+"\\"+ entry.getName() + ".m3u"),m3uInitial.getBytes(),StandardOpenOption.CREATE, StandardOpenOption.APPEND);
                     NodeList nList = document.getElementsByTagName("dict");
                     System.out.println("----------------------------");
                     for ( String trackID : entry.getIDs() ) {
@@ -221,7 +224,7 @@ public class Controller implements Initializable {
                                                 PortableDeviceStorageObject storage = (PortableDeviceStorageObject) object;
                                                 for (PortableDeviceObject o2 : storage.getChildObjects()) {
                                                     //TODO: change to Music folder after tests are done
-                                                    if(o2.getOriginalFileName().equalsIgnoreCase("Test Folder"))
+                                                    if(o2.getOriginalFileName().equalsIgnoreCase("Music"))
                                                     {
                                                         PortableDeviceFolderObject storage2 = (PortableDeviceFolderObject) o2;
                                                         // check if folder contains other folders already
@@ -229,7 +232,8 @@ public class Controller implements Initializable {
                                                             boolean found = false;
                                                             // search if folder contains this playlist's folder
                                                             for(PortableDeviceObject o3 : storage2.getChildObjects()){
-                                                                if (o3.getName().equalsIgnoreCase(entry.getName())){
+                                                                //if (o3.getName().equalsIgnoreCase(entry.getName())){
+                                                                if (o3.getName().equalsIgnoreCase(edit)){
                                                                     System.out.println("Folder already in device");
                                                                     targetFolder = (PortableDeviceFolderObject) o3;
                                                                     found = true;
@@ -238,12 +242,14 @@ public class Controller implements Initializable {
                                                             }
                                                             // if not found, create it
                                                             if(!found){
-                                                                targetFolder = storage2.createFolderObject(entry.getName());
+                                                                //targetFolder = storage2.createFolderObject(entry.getName());
+                                                                targetFolder = storage2.createFolderObject(edit);
                                                             }
                                                         }
                                                         // no folders inside, create new folder
                                                         else{
-                                                            targetFolder = storage2.createFolderObject(entry.getName());
+                                                            targetFolder = storage2.createFolderObject(edit);
+                                                            //targetFolder = storage2.createFolderObject(entry.getName());
                                                         }
                                                         break;
                                                     }
@@ -252,8 +258,10 @@ public class Controller implements Initializable {
                                             }
                                         }
                                     }
-                                    String m3uEntry = "\n./"+entry.getName()+"/"+srcFile.getName();
-                                    Files.write(Paths.get(iTunesPath+"\\"+ entry.getName() + ".m3u"),m3uEntry.getBytes(),StandardOpenOption.CREATE,StandardOpenOption.APPEND);
+                                    String m3uEntry = "\n./"+srcFile.getName();
+                                    //String m3uEntry = "\n./"+entry.getName()+"/"+srcFile.getName();
+                                    Files.write(Paths.get(iTunesPath+"\\"+ edit + ".m3u"),m3uEntry.getBytes(),StandardOpenOption.CREATE,StandardOpenOption.APPEND);
+                                    //Files.write(Paths.get(iTunesPath+"\\"+ entry.getName() + ".m3u"),m3uEntry.getBytes(),StandardOpenOption.CREATE,StandardOpenOption.APPEND);
                                     copyFileFromComputerToDeviceFolder(srcFile,targetFolder);
                                     prgsBar.setProgress(prgsBar.getProgress()+progressTick);
                                 }
@@ -261,11 +269,14 @@ public class Controller implements Initializable {
                         }
                     }
                     String m3uEnd = "\n";
-                    Files.write(Paths.get(iTunesPath+"\\"+ entry.getName() + ".m3u"),m3uEnd.getBytes(),StandardOpenOption.CREATE,StandardOpenOption.APPEND);
-                    File srcFile = new File(iTunesPath+"\\"+ entry.getName() + ".m3u");
+                    Files.write(Paths.get(iTunesPath+"\\"+ edit + ".m3u"),m3uEnd.getBytes(),StandardOpenOption.CREATE,StandardOpenOption.APPEND);
+                    //Files.write(Paths.get(iTunesPath+"\\"+ entry.getName() + ".m3u"),m3uEnd.getBytes(),StandardOpenOption.CREATE,StandardOpenOption.APPEND);
+                    File srcFile = new File(iTunesPath+"\\"+ edit + ".m3u");
+                    //File srcFile = new File(iTunesPath+"\\"+ entry.getName() + ".m3u");
                     // m3u file, transfer to phone then delete from computer
                     copyFileFromComputerToDeviceFolder(srcFile,targetFolder);
-                    Files.deleteIfExists(Paths.get(iTunesPath+"\\"+ entry.getName() + ".m3u"));
+                    Files.deleteIfExists(Paths.get(iTunesPath+"\\"+ edit + ".m3u"));
+                    //Files.deleteIfExists(Paths.get(iTunesPath+"\\"+ entry.getName() + ".m3u"));
                     targetFolder = null;
                 }
             }
