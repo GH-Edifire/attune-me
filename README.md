@@ -7,4 +7,5 @@ Reads iTunes Music Library .xml to determine playlists and song location on comp
 App development on hold with news of Apple dropping iTunes support.
 
 Example screenshot:
+
 ![screenshot](https://github.com/GH-Edifire/attune-me/blob/master/screenshot.png)
